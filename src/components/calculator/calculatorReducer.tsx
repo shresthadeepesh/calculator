@@ -1,5 +1,5 @@
 import React from 'react';
-import { IState } from './calculatorContext';
+import { IState, Operator } from './calculatorContext';
 
 export enum CalculatorActionType {
     CLEAR,
@@ -25,6 +25,12 @@ export const calculatorReducer = (state: IState, action: IAction) => {
             }
 
         case CalculatorActionType.ENTRY:
+            if((state.value[state.value.length - 1] === "+" || state.value[state.value.length - 1] === "-" || state.value[state.value.length - 1] === "*" || state.value[state.value.length - 1] === "/" || state.value[state.value.length - 1] === "%" || state.value[state.value.length - 1] === ".")
+             && (action.payload === "+" || action.payload === "-" || action.payload === "*" || action.payload === "/" || action.payload === "%" || action.payload === ".")
+             ) {
+                state.value.pop();
+            }
+
             return {
                 ...state,
                 value: [...state.value, action.payload]

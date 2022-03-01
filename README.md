@@ -1,7 +1,7 @@
 # Calculator
 Calculator created using ReactJs and TailwindCss.
 
-<a href="https://justanormaldreamer.github.io/tic-tac-toe/">
+<a href="https://justanormaldreamer.github.io/calculator/">
 View Demo
 </a> 
 

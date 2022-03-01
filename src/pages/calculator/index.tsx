@@ -28,7 +28,7 @@ const Calculator = () => {
                     <div className="buttons">
                         <div className="flex flex-wrap">
                             {values.map((value, index) => (
-                                <div className="w-1/4">
+                                <div className="w-1/4" key={index}>
                                     <Button value={value} />
                                 </div>
                             ))}
