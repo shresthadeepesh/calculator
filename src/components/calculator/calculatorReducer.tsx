@@ -25,16 +25,27 @@ export const calculatorReducer = (state: IState, action: IAction) => {
             }
 
         case CalculatorActionType.ENTRY:
-            if((state.value[state.value.length - 1] === "+" || state.value[state.value.length - 1] === "-" || state.value[state.value.length - 1] === "*" || state.value[state.value.length - 1] === "/" || state.value[state.value.length - 1] === "%" || state.value[state.value.length - 1] === ".")
+            const lastItem = state.value[state.value.length - 1];
+
+            if((lastItem === "+" || lastItem === "-" || lastItem === "*" || lastItem === "/" || lastItem === "%" || lastItem === ".")
              && (action.payload === "+" || action.payload === "-" || action.payload === "*" || action.payload === "/" || action.payload === "%" || action.payload === ".")
              ) {
                 state.value.pop();
             }
 
-            return {
-                ...state,
-                value: [...state.value, action.payload]
+            if(state.value.length === 0 && (action.payload === "+" || action.payload === "-" || typeof action.payload === 'number')) {
+                return {
+                    ...state,
+                    value: [...state.value, action.payload]
+                }
+            } else if(state.value.length >= 1) {
+                return {
+                    ...state,
+                    value: [...state.value, action.payload]
+                } 
             }
+
+            return state;
 
         case CalculatorActionType.EQUAL:
             const res = String(state.value).replaceAll(",", "");
