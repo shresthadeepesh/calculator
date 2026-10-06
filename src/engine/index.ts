@@ -1,0 +1,10 @@
+export { CalcError, kindOf } from './types';
+export type { Context, Table, TokenKind } from './types';
+export { evaluate, settle } from './shunting';
+export { scientific, LITERAL } from './scientific';
+export { programmer, formatBits, BASES, baseFor } from './programmer';
+export type { BaseKey } from './programmer';
+export { formatNumber, groupDigits, CONVERSION_PRECISION } from './format';
+export { prettify } from './display';
+export { CATEGORIES, categoryFor, unitFor, convert } from './units';
+export type { Category, Unit } from './units';
