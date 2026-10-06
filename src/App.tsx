@@ -5,7 +5,7 @@ const Calculator = lazy(() => import('./pages/calculator'));
 
 const App = () => {
     return (
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={<div className="min-h-screen" />}>
             <Calculator />
         </Suspense>
     )

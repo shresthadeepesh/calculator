@@ -1,43 +1,22 @@
 import React, { lazy, Suspense } from 'react';
-import { CalculatorProvider, Operator } from '../../components/calculator/calculatorContext';
+import { CalculatorProvider } from '../../components/calculator/calculatorContext';
 
 const Screen = lazy(() => import('../../components/calculator/screen'));
-const Button = lazy(() => import('../../components/calculator/button'));
-
-type Test = Operator | number;
-
-const values: Test[]  = [
-    "AC", "<-", "%", "/",
-    7, 8, 9, "*",
-    4, 5, 6, "-",
-    1, 2, 3, "+",
-    0, ".", "="
-];
+const Keypad = lazy(() => import('../../components/calculator/keypad'));
 
 const Calculator = () => {
     return (
         <CalculatorProvider>
-            <section className='w-96 mx-auto bg-gray-100 my-5 p-5 rounded-md'>
-                <Suspense fallback={"Loading..."}>
-                    <div className="">
-                        <h2 className="">Calculator</h2>
-                    </div>
-                    <div className="screen">
+            <main className="relative flex min-h-screen items-center justify-center px-4 py-10">
+                <div className="glass w-full max-w-[21rem] rounded-[1.75rem] p-5 pt-1">
+                    <Suspense fallback={<div className="h-[28rem]" />}>
                         <Screen />
-                    </div>
-                    <div className="buttons">
-                        <div className="flex flex-wrap">
-                            {values.map((value, index) => (
-                                <div className="w-1/4" key={index}>
-                                    <Button value={value} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </Suspense>
-            </section>
+                        <Keypad />
+                    </Suspense>
+                </div>
+            </main>
         </CalculatorProvider>
-    )
-}
+    );
+};
 
 export default Calculator;
